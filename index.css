@@ -1,0 +1,193 @@
+*{padding: 0;
+    margin: 0;
+}
+.loginarea{
+    background-color: #3F6085 ;
+    height: 609px;
+}
+.logform{
+    position: absolute;
+    left: 30%;
+    top:30%;
+    background-color: white;
+    width: 30%;
+    text-align: justify;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 10px 8px #000000;
+}
+label{
+    font-size: 27px;
+     
+}
+input{
+    padding: 6px;
+    border-radius: 4px;
+    width: 90%;
+    margin: 1%;
+    border: 1px solid #888888;
+    
+}
+p{
+    padding: 10px;
+}
+.signup a{
+    text-decoration: none;
+    font-weight: 600;
+    
+}
+.signup{
+    width: 30%;
+    float: left;
+}
+.forget {
+    width: 30%;
+    float: right;
+}
+.forget a{
+    text-decoration: none;
+    font-weight: 600;
+}
+.logbtn{
+    margin-left: 10px;
+    background-color: darkseagreen;
+    color: white;
+}
+.signup_pop{
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    top:0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.signup_pop_detail{
+    height: 250px;
+    
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    text-align: center;
+    
+}
+.signup_pop_detail p,label,input{
+    margin: 8px 8px;
+    padding: 5px 8px;
+    
+   
+}
+.signup_pop_detail p{
+    font-size: 20px;
+    font-weight: 600;
+}
+.signup_pop_detail label,input{
+    
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.formtype,.cus_submit{
+    width:90%;
+}
+.cus_submit{
+    background-color: cornflowerblue;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+.close,.close1.colse2 {
+    position: absolute;
+    left: 430px;
+    top:-3px;
+    background-color: white;
+    border-radius: 80px;
+    
+    margin: 0;
+    padding: 0;
+   height: 20px;
+    width: 20px;
+    font-size: 10px;
+   color: #888888;
+    border:1px solid #888888;
+    
+    cursor: pointer;
+    
+    
+}
+.close p{
+    position: relative;
+    top:-16px;
+    left: -11px;
+}
+.forget_pop{
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    top:0;
+    z-index: -1;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.forget_pop_detail{
+    height: 150px;
+    width: 20%;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    text-align: center;
+    
+}
+
+.forget_verifypop_detail
+{
+    height: 150px;
+    width: 20%;
+    z-index: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: fixed;
+    
+    text-align: center;
+}
+
+.forget_changepop_detail
+{
+    height: 150px;
+    width: 20%;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    text-align: center;
+}
+.forget_pop_detail,.forget_verifypop_detail,.forget_changepop_detail p,label,input{
+    margin: 8px 8px;
+    padding: 5px 8px;
+    
+   
+}
+.forget_pop_detail,.forget_verifypop_detail,.forget_changepop_detail p{
+    font-size: 20px;
+    font-weight: 600;
+}
+.forget_pop_detail,.forget_verifypop_detail,.forget_changepop_detail label,input{
+    
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.verify_otp{
+    display: none;
+}
+#change_password1,#change_password{
+    display: none;
+}
+
+

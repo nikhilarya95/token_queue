@@ -1,0 +1,32 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.header{
+    background: linear-gradient(#587EB2,#769ACB,#A2BDE3,#A1C2F0,#587EB2 );
+    display: flex;
+}
+.logo img{
+    
+    margin-left: 100px;
+    width:320px;
+    padding: 3%;
+    
+}
+.logout{
+    position: absolute;
+    left: 80%;
+    top:5%;
+    padding: 10px;
+    
+    font-weight: 700;
+    font-size: 20px;
+    
+}
+.logout a{
+    text-decoration: none;
+    color: #8F3C68 ;
+}
+.logout a:hover{
+    color: #8F3C68 ;
+}
