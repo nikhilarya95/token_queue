@@ -1,11 +1,4 @@
-<?php include('connectivity.php');
-    error_reporting(0);
-?>
-<?php include('databasequery.php');?>
-
-
- 
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 <title>Token queue</title>    
@@ -21,13 +14,13 @@
     </div>
     <div class="logid">
         
-        <p class="logout"><a href="index.php">Logout</a></p>
+        <p class="logout"><a href="index.html">Logout</a></p>
         
     </div>
     
 </div>
      
-    <p id="date">
+    <a id="date" name="tokendate">
         <script>
     var currentdate = new Date();
          
@@ -42,9 +35,28 @@
         document.write(fulldate);
          
     </script>
-    </p>
+    </a>
     <p ><a class="addbtn" id="addbtn" href="#">+</a></p>
     <div class="tokenarea" id="tokenarea">
+        <?php
+include('connectivity.php');
+$tokenselector = "SELECT token_no FROM token_detail";
+$tokenquery = $con->query($tokenselector);
+if($tokenquery -> num_rows >0)
+{
+    while($row = $tokenquery->fetch_assoc())
+    {
+        echo "<script>var newPara = document.createElement('a');
+        newPara.classList.add('token');
+        
+        var textnode=document.createTextNode(".$row['token_no'].");
+        newPara.appendChild(textnode);
+        document.getElementById('tokenarea').appendChild(newPara); </script>";
+    }
+    
+}
+
+?>
         
     </div>
     <div class="customer">
@@ -52,11 +64,11 @@
             <div class="close">
             <p >x</p>
             </div>
-            <form name="custom_form" action="User.php" method="POST">
+            <form name="custom_form" action="Tokencreated.php" method="POST">
             <table>
                   <tr>
                       <td><lable>Token number:</lable></td>
-                    <td><p class="tokenno" name="cus_tokenno" id="tokenno"></p></td>
+                    <td><a class="tokenno" name="cus_tokenno" id="tokenno"></a></td>
                     
                 </tr>
                 <tr>

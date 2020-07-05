@@ -1,11 +1,11 @@
- let count=1;
+var count=1;
         document.getElementById("addbtn").addEventListener("click",function(){
            document.querySelector(".customer").style.display = "flex";
             
             
-            var textnode1=document.createTextNode(count);
             
-            document.getElementById("tokenno").innerHTML= count;
+            
+            document.getElementById("tokenno").appendChild= count;
                     
         console.log(tokenno)
             
@@ -67,7 +67,7 @@ if(custom_form.cus_formname=="")
            
             var newPara = document.createElement('a');
             newPara.classList.add('token');
-            
+            newPara.name.add('tokenname');
             var textnode=document.createTextNode(count);
             newPara.appendChild(textnode);
             
@@ -93,3 +93,4 @@ function reportErrors(errors)
 }
  alert(msg);
 }
+
