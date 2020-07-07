@@ -94,3 +94,4 @@ function reportErrors(errors)
  alert(msg);
 }
 
+document.custom_form.reset();

@@ -1,25 +1,64 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Token queue</title>    
-    <link rel="stylesheet" type="text/css" href="header.css"/>
-    <link rel="stylesheet" type="text/css" href="User.css"/>
+<title>Token queue</title> 
+<link rel="stylesheet" type="text/css" href="header.css"/>
+    <link rel="stylesheet" type="text/css" href="User.css"/>   
+   <style>
+::-webkit-scrollbar { width: 10px;}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px #D3B8B0 ; 
+  border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #E59B87; 
+  border-radius: 10px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #D17860;}
+       </style>
 <!--    <script type="text/javascript" href="date.javascript"></script>-->
    
 </head>
 <body>
+    
+    <?php include('connectivity.php');
+    session_start();
+    
+    $sessionemail = $_SESSION['sessionemail'];
+    if($sessionemail==false )
+    {
+        header('location:index.html');
+    }
+   
+    $sessionquery = "SELECT * FROM client_detail WHERE email='$sessionemail'";
+    $sessionresult = mysqli_query($con,$sessionquery);
+    $sessiondata = mysqli_fetch_assoc($sessionresult);
+
+    ?>
+     
 <div class="header">
     <div class="logo">
-        <img src="img\logo.png" alt="logo"/>
+        <img style="margin: 2px;width:220px" src="img\logo.png" alt="logo"/>
     </div>
+    
+    <div  style="font-size:40px; margin:2%;text-align:center;position:absolute; left:25%;color:#173164 ;padding-left:2%; font-weight: 700; " >
+     <?php echo $sessiondata['com_shop_name'];?>
+</div>
+
     <div class="logid">
         
-        <p class="logout"><a href="index.html">Logout</a></p>
+        <p class="logout"><a href="Logout.php">Logout</a></p>
         
     </div>
     
 </div>
-     
+     <p style="font-size:16px;font-weight:600;color:#9D3E00; float:left;margin:2%;"><?php echo "Welcome " .$sessiondata['first_name']." ".$sessiondata['last_name'];?></p>
     <a id="date" name="tokendate">
         <script>
     var currentdate = new Date();
@@ -37,10 +76,15 @@
     </script>
     </a>
     <p ><a class="addbtn" id="addbtn" href="#">+</a></p>
-    <div class="tokenarea" id="tokenarea">
+    <div class="tokenarea" id="tokenarea" style="overflow:auto; ">
+  
         <?php
 include('connectivity.php');
-$tokenselector = "SELECT token_no FROM token_detail";
+$matchdate=date("d/m/yy");
+
+
+
+$tokenselector = "SELECT token_no FROM token_detail where date_of_token = '$matchdate'";
 $tokenquery = $con->query($tokenselector);
 if($tokenquery -> num_rows >0)
 {

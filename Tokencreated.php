@@ -20,30 +20,50 @@
 
     //$tokenno= $_POST['cus_tokenno'];
     //echo $tokenno;
-    $tok=0;
-            $firstname="";
-            $lastname="";
-            $mobile="";
-            $email="";
-            $formname="";
-            $tokenno =0;
-            $dateoftoken="";
-    $tokenno=$tokenno+1;
+    $tokensubmit=NULL;
+   $firstname=NULL;
+   $lastname=NULL;
+    $mobile=NULL;
+    $email=NULL;
+    $formname=NULL;
+    $dateoftoken=NULL;
+    $tokensubmit=$_POST['cus_submitbtn'];
+ if(isset($tokensubmit))           
+{
     $firstname=$_POST['cus_firstname'];
     $lastname=$_POST['cus_lastname'];
     $mobile=$_POST['cus_mobile'];
     $email=$_POST['cus_email'];
     $formname=$_POST['cus_formname'];
     $dateoftoken=date("d/m/yy");
-    
+    $time=date("h:iA");
+    $host = "localhost";
+    $DB_USER = "root";
+    $DB_PASS = "";
+    $DB_NAME = "tokenqueue";
+    $con = new mysqli($host,$DB_USER,$DB_PASS,$DB_NAME);
+    $tokenselector = "SELECT token_no FROM token_detail";
+    $tokenquery = $con->query($tokenselector);
+
+    if($tokenquery -> num_rows >0)
+    {
+        while($row = $tokenquery->fetch_assoc())
+        {   
+            $tokenno=$row['token_no']+1;
+        }
+    }
+    else if($time=date("07:59AM"))
+    {
+        $tokenno=1;
+    }
+    else
+    {
+        $tokenno=1;
+    }
+
     if(!empty($firstname)||!empty($lastname)||!empty($mobile)||!empty($email)||!empty($formname))   
     {
-        $host = "localhost";
-        $DB_USER = "root";
-        $DB_PASS = "";
-        $DB_NAME = "tokenqueue";
-        $con = new mysqli($host,$DB_USER,$DB_PASS,$DB_NAME);
-        // Check connection
+           // Check connection
         if (mysqli_connect_error())
         {
             die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
@@ -78,8 +98,21 @@
                 $stmt ->execute();
                 $stmt->close();
                 $stmt = $con->prepare($inserttokenQuery);
-                $stmt -> bind_param("sssd", $tokenno, $email, $formname, $dateoftoken);
+                $stmt -> bind_param("ssss", $tokenno, $email, $formname, $dateoftoken);
                 $stmt ->execute();
+
+                $to=$email;
+                $msg= "YOUR TOKEN NUMBER IS : $tokenno.";   
+                $subject="Token Queue " ;
+                $headers .= "MIME-Version: 1.0"."\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
+                $headers .= 'From: Token Queue'."\r\n";
+                $ms.="<html></body><div><div>Dear $firstname,</div></br></br>";
+                $ms.="<div style='padding-top:8px;'>YOUR TOKEN NUMBER IS : </div>
+                <div style='padding-top:10px;'>$tokenno</div>
+                </div>
+                </body></html>";
+                mail($to,$subject,$ms,$headers);
                 echo "<script>alert('Token Created')</script>";
                 }
                 else
@@ -88,6 +121,19 @@
                     $stmt = $con->prepare($inserttokenQuery);
                     $stmt -> bind_param("ssss", $tokenno, $email, $formname, $dateoftoken);
                     $stmt ->execute();
+
+                    $to=$email;
+                $msg= "YOUR TOKEN NUMBER IS : $tokenno.";   
+                $subject="Token Queue " ;
+                $headers .= "MIME-Version: 1.0"."\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
+                $headers .= 'From: Token Queue'."\r\n";
+                $ms.="<html></body><div><div>Dear $firstname,</div></br></br>";
+                $ms.="<div style='padding-top:8px;'>YOUR TOKEN NUMBER IS : </div>
+                <div style='padding-top:10px;'>$tokenno</div>
+                </div>
+                </body></html>";
+                mail($to,$subject,$ms,$headers);
                     echo "<script>alert('Token Created')</script>";
                 }
             }
@@ -100,8 +146,9 @@
         $con -> close();
 
     }
-    
+}
 
-include("User.php");
-exit();
+
+header("location:User.php");
+exit;
 ?>

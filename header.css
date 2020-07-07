@@ -8,14 +8,14 @@
 }
 .logo img{
     
-    margin-left: 100px;
-    width:320px;
+    margin-left: 30px;
+    width:120px;
     padding: 3%;
     
 }
 .logout{
     position: absolute;
-    left: 80%;
+    left: 90%;
     top:5%;
     padding: 10px;
     

@@ -1,0 +1,207 @@
+   <!-- <?php 
+//    include('connectivity.php');
+//     error_reporting(0); 
+?>
+ <?php
+// if(isset($_POST['sign_submit']))
+// {
+// $firstname=$_POST['sign_firstname'];
+// $lastname=$_POST['sign_lastname'];
+// $mobile=$_POST['sign_mobile'];
+// $email=$_POST['sign_email'];
+// $password=$_POST['sign_password'];
+// $company=$_POST['sign_companyname'];
+   
+// $insertQuery= "INSERT INTO client_detail VALUES('$firstname','$lastname','$mobile','$email','$password','$company')";
+// $insertedata= mysqli_query($con,$insertQuery);
+// if($insertedata)
+// {
+//    ?><script>alert("Thank you for signUp")</script><?php
+    
+// }
+// }
+?>  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Token queue</title>    
+<link rel="stylesheet" type="text/css" href="header.css"/>
+<link rel="stylesheet" type="text/css" href="index.css"/>
+    
+   
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <img src="img\logo.png" alt="logo"/>
+    </div>
+        
+</div>
+     <div class="loginarea">
+         <div class="logform">
+        <form action="Login.php" method="POST">
+            <label>Email ID</label>
+            <br/>
+            <input class="email" type="text" name="log_email"Placeholder="Enter email ID" required/>
+            <br/>
+            <label>Password</label>
+            <br/>
+            <input type="password" name="log_password" placeholder="Enter password" required>
+            <br/>
+            <input class="logbtn" type="submit" value="Login"/>
+            <br/>
+            <div class="addtional">
+            <p class="signup"><a href="#" id="signup">SignUp</a></p>
+            
+            <!-- <p class="forget"><a id="forget" href="#">Forget Password</a></p> -->
+            </div>
+         </form>
+         </div>
+    </div>
+  <div class="signup_pop">
+        <div class="signup_pop_detail">
+            <div class="close">
+            <p >x</p>
+            </div>
+            <form name="Signup" action="Signup.php" method="POST">
+            <table>
+                 
+                <tr>
+                    <td class="firstname"><input type="text" name="sign_firstname" placeholder="First Name" required/></td>
+                    <td><input type="text" name="sign_lastname" placeholder="Last Name" required/></td>
+                    
+                    
+                </tr>
+                <tr>
+                    <td><input type="text" name="sign_mobile" placeholder="Mobile" required/></td>
+                <td><input type="text" name="sign_email" placeholder="Email Id" required/></td>
+                    
+                </tr>
+                 <tr>
+                      <td><input type="password" name="sign_password" placeholder="Password" required/></td><td><input type="password" name="sign_confirmpassword" placeholder="Confirm Password" required/></td>
+                    
+                    
+                </tr>
+                <tr>
+                    <td colspan="2"><input class="formtype" name="sign_companyname" type="text" placeholder="Company/Shop Name" required/></td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="2"><input class="cus_submit" name="sign_submit" onclick="validate()"type="submit" value="Sign up"/></td>
+                </tr>
+            </table>
+            </form>
+           
+        </div>
+    </div>
+    <script  src="signup.js"></script>
+    
+    
+
+<!-- <div class="forget_pop" id="forget_pop">
+    <div class="forget_pop_detail">
+        <div class="close" id="close">
+            <p >x</p>
+        </div>
+        <form method="POST">
+            <table>
+                <tr id="send_otp">
+                    <td colspan="2"><input class="formtype" name="forget_companyname" type="text" placeholder="Company/Shop Name" required /></td>
+                    
+                </tr>
+                <tr id="send_otp1">
+                    <td><input type="text" name="forget_mobile" placeholder="Mobile" required/></td>
+                    <td><input type="text" name="forget_email" placeholder="Email Id" required></td>
+                </tr>
+                <tr  id="send_otp2">
+                    <td colspan="2"><input class="cus_submit" name="sendotpnm" id="sendotp" type="submit" value="Send OTP"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div> -->
+
+<!-- <?php
+//     if(isset($_POST['sendotpnm']))
+//     {
+//         $email=$_POST['forget_email'];
+//         $otp=rand(100000,999999);
+//         $forgetmobile = $_POST['forget_mobile'];
+//         $companyname = $_POST['forget_companyname'];
+//         $search="SELECT * FROM `client_detail` where email=`$email`";
+//         $searchquery =mysqli_query($con,$search);
+//         while($row = mysqli_fatch_array($searchquery))
+//         {
+                
+//             $insertotp="INSERT INTO otp_detail (`mobile`,`email`,`otp`,`status`) VALUES ('$forgetmobile','$email','$otp',0) ";
+//             $insertotpdata= mysqli_query($con,$insertotp);
+//             if($insertotpdata)
+//             {
+//                 $to=$email;
+//                 $msg= "Thanks for new Registration.";   
+//                 $subject="OTP verification for " + $companyname ;
+//                 $headers .= "MIME-Version: 1.0"."\r\n";
+//                 $headers .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
+//                 $headers .= 'From: Token Queue'."\r\n";
+//                 $ms.="<html></body><div><div>Dear ,</div></br></br>";
+//                 $ms.="<div style='padding-top:8px;'>Please Enter This OTP for Verification</div>
+//                 <div style='padding-top:10px;'>$otp</div>
+//                 </div>
+//                 </body></html>";
+//                 mail($to,$subject,$ms,$headers);
+//                 echo "<script>alert('OTP send to your email please verify it .');</script>";
+//             }
+//             else
+//             {
+//                 echo "alert('OTP NOT SEND')";
+//             }
+//         }
+
+//    }
+?> -->
+
+ 
+    <div class="forget_verifypop_detail">
+        <div class="close1" id="close1">
+            <p >x</p>
+        </div>
+        <form >
+            <table>
+                <tr class="verify_otp" id="verify_otp">
+                    <td colspan="2"><input class="enterotp" name="otp" type="text" placeholder="Enter OTP" required/></td>                    
+                </tr>
+                <tr class="verify_otp"id="verify_otp1">
+                    <td colspan="2"><input class="cus_submit" id="verifyotp" type="submit" value="Verify OTP" /></td>
+                </tr>
+                <!-- <?php 
+                    $enterotp = $_POST['otp'];
+                    $searchotp="UPDATE `otp_detail` SET `status`=1 where otp=`$otp`";
+                    $searchotpquery =mysqli_query($con,$searchotp);
+                ?> -->
+            </table>
+        </form>
+    
+</div>
+
+<!-- <div class="forget_changepop" id="forget_changepop">
+    <div class="forget_changepop_detail">
+        <div class="close2" id="close2">
+            <p >x</p>
+        </div>
+        <form >
+            <table>
+                <tr id="change_password">
+                    <td><input type="password" name="forget_password" placeholder="Password" required/></td><td><input type="password" name="forget_confirmpassword" placeholder="Confirm Password" required/></td>
+                    
+                </tr>
+                <tr id="change_password1">
+                    <td colspan="2"><input class="cus_submit" type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div> --> 
+    <script src="Forgetpassword.js"></script>
+</body>
+</html>
